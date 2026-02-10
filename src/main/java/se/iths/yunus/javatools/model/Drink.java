@@ -15,7 +15,9 @@ public class Drink {
     @Column(nullable = false)
     private String name;
     private double price;
-    private boolean sugar;
+
+    @Column(name="has_sugar")
+    private boolean hasSugar;
     @Column(name="best_before")
     private LocalDate bestBefore;
     private int quantity;
@@ -23,11 +25,11 @@ public class Drink {
     public Drink() {
     }
 
-    public Drink(Long id, String name, double price, boolean sugar, LocalDate bestBefore, int quantity) {
+    public Drink(Long id, String name, double price, boolean hasSugar, LocalDate bestBefore, int quantity) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.sugar = sugar;
+        this.hasSugar = hasSugar;
         this.bestBefore = bestBefore;
         this.quantity = quantity;
     }
@@ -56,12 +58,12 @@ public class Drink {
         this.price = price;
     }
 
-    public boolean getSugar() {
-        return sugar;
+    public boolean getHasSugar() {
+        return hasSugar;
     }
 
-    public void setSugar(boolean sugar) {
-        this.sugar = sugar;
+    public void setHasSugar(boolean hasSugar) {
+        this.hasSugar = hasSugar;
     }
 
     public LocalDate getBestBefore() {
@@ -86,7 +88,7 @@ public class Drink {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", Sugar=" + sugar +
+                ", Sugar=" + hasSugar +
                 ", bestBefore=" + bestBefore +
                 ", quantity=" + quantity +
                 '}';

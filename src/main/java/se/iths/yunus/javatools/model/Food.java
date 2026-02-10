@@ -11,8 +11,12 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private boolean lactose;
-    private boolean seafood;
+
+    @Column(name="has_lactose")
+    private boolean hasLactose;
+
+    @Column(name="has_seafood")
+    private boolean hasSeafood;
 
     @Column(name ="best_before")
     private LocalDate bestBefore;
@@ -21,10 +25,11 @@ public class Food {
     public Food() {
     }
 
-    public Food(Long id, String name, boolean lactose, boolean seafood, LocalDate bestBefore, int quantity) {
+    public Food(Long id, String name, boolean hasLactose, boolean hasSeafood, LocalDate bestBefore, int quantity) {
         this.id = id;
         this.name = name;
-        this.seafood = seafood;
+        this.hasSeafood = hasSeafood;
+        this.hasLactose = hasLactose;
         this.bestBefore = bestBefore;
         this.quantity = quantity;
     }
@@ -45,20 +50,20 @@ public class Food {
         this.name = name;
     }
 
-    public boolean isLactose() {
-        return lactose;
+    public boolean getHasLactose() {
+        return hasLactose;
     }
 
-    public void setLactose(boolean lactose) {
-        this.lactose = lactose;
+    public void setHasLactose(boolean hasLactose) {
+        this.hasLactose = hasLactose;
     }
 
-    public boolean isSeafood() {
-        return seafood;
+    public boolean getHasSeafood() {
+        return hasSeafood;
     }
 
-    public void setSeafood(boolean seafood) {
-        this.seafood = seafood;
+    public void setHasSeafood(boolean hasSeafood) {
+        this.hasSeafood = hasSeafood;
     }
 
     public LocalDate getBestBefore() {
@@ -82,8 +87,8 @@ public class Food {
         return "Food{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", Lactose=" + lactose +
-                ", Seafood=" + seafood +
+                ", Lactose=" + hasLactose +
+                ", Seafood=" + hasSeafood +
                 ", bestBefore=" + bestBefore +
                 ", quantity=" + quantity +
                 '}';

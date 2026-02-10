@@ -11,8 +11,8 @@ import java.util.Optional;
 @Repository
 public interface FoodRepository extends JpaRepository<Food, Long> {
     Optional<Food> findByName(String name);
-    List<Food> findAllSeafood();
-    List<Food> findAllLactoseFood();
+    List<Food> findAllHasSeafood();
+    List<Food> findAllLHasLactose();
     List<Food> findByNameContaining(String keyword);
     List<Food> findHasLactose();
     List<Food> findByQuantityLessThanEqual( int quantity);

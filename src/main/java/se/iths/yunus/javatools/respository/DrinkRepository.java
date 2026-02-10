@@ -12,7 +12,7 @@ import java.util.List;
 public interface DrinkRepository extends JpaRepository<Drink, Long> {
     List<Drink>findByNameContainingIgnoreCase(String name);
     List<Drink>findByNameStartingWithIgnoreCase(String name);
-    List<Drink>findDrinkBySugar(boolean sugar);
+    List<Drink>findDrinkByHasSugar(boolean hasSugar);
     List<Drink> findByQuantityLessThanEqual(int quantity);
     List<Drink> findByBestBeforeBefore(LocalDate date);
     List<Drink> findByBestBeforeBetween(LocalDate start, LocalDate end);
