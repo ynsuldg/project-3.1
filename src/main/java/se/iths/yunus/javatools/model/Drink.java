@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import java.sql.Date;
 
 @Entity
-public class Drink { // Model
+public class Drink { // Comment for commit
     @Id
     @GeneratedValue
     private Long id;
