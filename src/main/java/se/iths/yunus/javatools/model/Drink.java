@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import java.sql.Date;
 
 @Entity
-public class Drink {
+public class Drink { // Model
     @Id
     @GeneratedValue
     private Long id;
