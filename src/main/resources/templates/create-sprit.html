@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skapa Sprit</title>
+</head>
+<body>
+<h1>Skapa eller Lägg till Sprit</h1>
+<form method="post" th:action="@{sprits}">
+    <p>
+        <label>Typ: </label>
+        <input type="text" name="type">
+    </p>
+    <p>
+        <label>Titel: </label>
+        <input type="text" name="titel">
+    </p>
+    <p>
+        <label>Alcohol per Volume: </label>
+        <input type="text" name="apv">
+    </p>
+    <p>
+        <label>Months: </label>
+        <input type="text" name="ageInMonth">
+    </p>
+    <p>
+        <label>Prise: </label>
+        <input type="text" name="prise">
+    </p>
+    <button type="submit">Spara</button>
+</form>
+</body>
+</html>
