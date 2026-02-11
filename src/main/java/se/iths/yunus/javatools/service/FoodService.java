@@ -6,6 +6,7 @@ import se.iths.yunus.javatools.exception.FoodAlreadyExistsException;
 import se.iths.yunus.javatools.exception.FoodNotFoundException;
 import se.iths.yunus.javatools.model.Food;
 import se.iths.yunus.javatools.respository.FoodRepository;
+import se.iths.yunus.javatools.validator.FoodValidator;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,16 +15,21 @@ import java.util.List;
 public class FoodService {
 
     private final FoodRepository foodRepository;
+    private final FoodValidator foodValidator;
 
     @Autowired
-    public FoodService(FoodRepository foodRepository) {
+
+    public FoodService(FoodRepository foodRepository, FoodValidator foodValidator) {
         this.foodRepository = foodRepository;
+        this.foodValidator = foodValidator;
     }
 
 
 
     // ================================= CREATE ==========================================
     public Food create(Food food) {
+        foodValidator.validate(food);
+
        if(foodRepository.findById(food.getId()).isPresent()){
            throw new FoodAlreadyExistsException(String.format("A food item with ID: %d already exists", food.getId()));
        }
@@ -100,6 +106,9 @@ public class FoodService {
     // ================================= UPDATE ==========================================
 
     public Food update(Long id, Food updated){
+
+        foodValidator.validate(updated);
+
         Food existing = foodRepository.findById(id)
                 .orElseThrow(()-> new FoodNotFoundException(String.format("Food with id %d not found", id)));
 
@@ -109,6 +118,8 @@ public class FoodService {
     }
 
     public Food update(String barcode, Food updated) {
+        foodValidator.validate(updated);
+
         Food existing = foodRepository.findByBarcode(barcode)
                 .orElseThrow(()-> new FoodNotFoundException(String.format("Food item with barcode %s does not exist!", barcode)));
         setFoodAttributes(updated, existing);
