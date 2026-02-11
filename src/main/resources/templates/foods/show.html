@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Food Information</title>
+</head>
+<body>
+<h1 th:text="${food.name}"></h1>
+<p><strong>Barcode:</strong><span th:text="${food.barcode}"></span></p>
+<p><strong>Price:</strong><span th:text="${food.price}"></span></p>
+<p><strong>Lactose</strong><span th:text="${food.hasLactose}"></span></p>
+<p><strong>Seafood</strong><span th:text="${food.hasSeafood}"></span></p>
+<P><strong>Price</strong><span th:text="${food.price}"></span></P>
+<p><strong>Quantity</strong><span th:text="${food.quantity}"></span></p>
+<p><strong>Best Before Date</strong><span th:text="${food.bestBefore}"></span></p>
+
+<a th:href="@{/foods/edit/{id}(id=${food.id})}">Edit</a>
+<a href="/foods">Back to list</a>
+
+</body>
+</html>
