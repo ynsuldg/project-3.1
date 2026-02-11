@@ -1,9 +1,10 @@
 package se.iths.yunus.javatools.service;
 
 import org.springframework.stereotype.Service;
-import se.iths.yunus.javatools.exception.NoDrinkFoundException;
+import se.iths.yunus.javatools.exception.DrinkNotFoundException;
 import se.iths.yunus.javatools.model.Drink;
 import se.iths.yunus.javatools.repository.DrinkRepository;
+import se.iths.yunus.javatools.validator.DrinkValidator;
 
 import java.util.List;
 
@@ -11,24 +12,28 @@ import java.util.List;
 public class DrinkService {
 
     private final DrinkRepository drinkRepository;
+    private final DrinkValidator drinkValidator;
 
-    public DrinkService(DrinkRepository drinkRepository) {
+    public DrinkService(DrinkRepository drinkRepository, DrinkValidator drinkValidator) {
         this.drinkRepository = drinkRepository;
+        this.drinkValidator = drinkValidator;
     }
 
-    public List<Drink> findAll() {
+    public List<Drink> getAllDrinks() {
         return drinkRepository.findAll();
     }
 
-    public Drink findById(Long id) {
-        return drinkRepository.findById(id).orElseThrow(() -> new NoDrinkFoundException("Drink with id " + id + " not found"));
+    public Drink getDrink(Long id) {
+        return drinkRepository.findById(id).orElseThrow(() -> new DrinkNotFoundException("Drink with id " + id + " not found"));
     }
 
-    public Drink putDrink(Drink drink) {
+    public Drink postNewDrink(Drink drink) {
+        drinkValidator.validate(drink);
         return drinkRepository.save(drink);
     }
 
-    public Drink postDrink(Long id, Drink drink) {
+    public Drink putExistingDrink(Long id, Drink drink) {
+        drinkValidator.validate(drink);
         drink.setId(id);
         return drinkRepository.save(drink);
     }
