@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-public class Drink {
+public class Drink { // modell
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
