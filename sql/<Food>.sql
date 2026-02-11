@@ -1,12 +1,11 @@
+
 CREATE TABLE food (
-                      id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                      name VARCHAR(255) NOT NULL,
-                      lactose BOOLEAN,
-                      seafood BOOLEAN,
+                      id BIGSERIAL PRIMARY KEY,
+                      name VARCHAR(255),
+                      has_lactose BOOLEAN,
+                      has_seafood BOOLEAN,
+                      barcode VARCHAR(255),
+                      price DOUBLE PRECISION NOT NULL CHECK (price >= 0),
                       best_before DATE,
                       quantity INT
 );
-
-ALTER TABLE food RENAME COLUMN lactose TO has_lactose;
-ALTER TABLE food RENAME COLUMN seafood TO has_seafood;
-

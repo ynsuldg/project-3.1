@@ -11,10 +11,10 @@ import java.util.Optional;
 @Repository
 public interface FoodRepository extends JpaRepository<Food, Long> {
     Optional<Food> findByName(String name);
+    Optional<Food> findByBarcode(String barcode);
     List<Food> findAllHasSeafood();
-    List<Food> findAllLHasLactose();
-    List<Food> findByNameContaining(String keyword);
-    List<Food> findHasLactose();
+    List<Food> findAllHasLactose();
+    List<Food> findByNameContainingIgnoreCase(String keyword);
     List<Food> findByQuantityLessThanEqual( int quantity);
     List<Food> findByBestBeforeBefore(LocalDate date);
     List<Food> findByBestBeforeBetween(LocalDate start, LocalDate end);

@@ -1,8 +1,11 @@
 package se.iths.yunus.javatools.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+
 
 @Entity
 @Table(name = "food")
@@ -18,6 +21,13 @@ public class Food {
     @Column(name="has_seafood")
     private boolean hasSeafood;
 
+
+    private String barcode;
+
+    @Column(nullable = false)
+    @Min(0)
+    private double price;
+
     @Column(name ="best_before")
     private LocalDate bestBefore;
     private int quantity;
@@ -25,11 +35,13 @@ public class Food {
     public Food() {
     }
 
-    public Food(Long id, String name, boolean hasLactose, boolean hasSeafood, LocalDate bestBefore, int quantity) {
+    public Food(Long id, String name, boolean hasLactose, boolean hasSeafood, String barcode, double price, LocalDate bestBefore, int quantity) {
         this.id = id;
         this.name = name;
-        this.hasSeafood = hasSeafood;
         this.hasLactose = hasLactose;
+        this.hasSeafood = hasSeafood;
+        this.barcode = barcode;
+        this.price = price;
         this.bestBefore = bestBefore;
         this.quantity = quantity;
     }
@@ -66,6 +78,22 @@ public class Food {
         this.hasSeafood = hasSeafood;
     }
 
+    public String getBarcode(){
+        return barcode;
+    }
+
+    public void setBarcode(String barcode){
+        this.barcode = barcode;
+    }
+
+    public double getPrice(){
+        return price;
+    }
+
+    public void setPrice(double price){
+        this.price = price;
+    }
+
     public LocalDate getBestBefore() {
         return bestBefore;
     }
@@ -87,12 +115,15 @@ public class Food {
         return "Food{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", Lactose=" + hasLactose +
-                ", Seafood=" + hasSeafood +
+                ", hasLactose=" + hasLactose +
+                ", hasSeafood=" + hasSeafood +
+                ", barcode='" + barcode + '\'' +
+                ", price=" + price +
                 ", bestBefore=" + bestBefore +
                 ", quantity=" + quantity +
                 '}';
     }
+
 
     public boolean isLowStock(int threshold) {
         return quantity < threshold;
