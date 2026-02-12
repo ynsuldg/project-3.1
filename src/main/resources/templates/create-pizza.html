@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Skapa pizza</title>
+</head>
+<body>
+
+<h1>Skapa en ny pizza</h1>
+
+<form th:action="@{/pizzas}" th:object="${pizza}" method="post">
+
+    <p>
+        <label>Namn:</label>
+        <input type="text" th:field="*{name}"/>
+    </p>
+
+    <p>
+        <label>Topping:</label>
+        <input type="text" th:field="*{topping}"/>
+    </p>
+
+    <p>
+        <label>Ost:</label>
+        <input type="text" th:field="*{cheese}"/>
+    </p>
+
+    <p>
+        <label>Pris:</label>
+        <input type="number" th:field="*{price}"/>
+    </p>
+
+    <button type="submit">Skapa pizza</button>
+
+</form>
+
+<br>
+<a th:href="@{/pizzas}">Tillbaka</a>
+
+</body>
+</html>

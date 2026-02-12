@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visa alla pizzor</title>
+</head>
+<body>
+
+<h1> Visa pizza </h1>
+<span th:text="${pizza.name}"></span>
+<span th:text="${pizza.price}"></span>
+
+<a th:href="@{/pizzas}">Tillbaka till alla pizzor</a>
+
+</body>
+</html>

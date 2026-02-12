@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alla pizzor</title>
+</head>
+<body>
+
+<h1>Alla pizzor</h1>
+
+<ul>
+    <li th:each="pizza : ${pizzas}">
+        <!-- Visa pizzans namn -->
+        <span th:text="${pizza.name}"></span>
+
+        <!-- Länk till visa pizza -->
+        <a th:href="@{/pizzas/{id}(id=${pizza.id})}">Visa pizza</a>
+
+        <span> - </span>
+
+        <!-- Länk till edit pizza -->
+        <a th:href="@{/pizzas/{id}/edit(id=${pizza.id})}">Redigera pizza</a>
+
+        <span> - </span>
+
+        <!-- Form för att radera pizza -->
+        <form th:action="@{/pizzas/{id}(id=${pizza.id})}" method="post" style="display: inline;">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+<!-- Länk för att skapa ny pizza -->
+<a th:href="@{/pizzas/new}">Ny pizza</a>
+
+</body>
+</html>

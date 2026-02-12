@@ -6,4 +6,5 @@ public class NoPizzaFoundException extends RuntimeException {
     public NoPizzaFoundException(String message) {
         super(message);
     }
+
 }
