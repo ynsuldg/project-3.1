@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprit</title>
+</head>
+<body>
+<h1>Sprit Menu</h1>
+<ul>
+    <li th:each="spirit : ${sprits}">
+        <span th:text="${spirit.title}"></span>
+        <a th:href="@{/sprits/{id}(id=${spirit.id})}">Visa Info</a>
+        <span> - </span>
+        <a th:href="@{/sprits/{id}/edit(id=${spirit.id})}">Uppdatera</a>
+    </li>
+</ul>
+</body>
+</html>

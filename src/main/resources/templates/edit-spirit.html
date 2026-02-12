@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uppdatera Spirit</title>
+</head>
+<body>
+<h1>Uppdatera Spirit</h1>
+<form method="post" th:action="@{/spirits/{id}(id=${spirit.id})}">
+    <input type="hidden" name="_method" value="PUT">
+    <p>
+        <label>Typ av Spirit: </label>
+        <input type="text" name="type" th:value="${spirit.type}">
+    </p>
+    <p>
+        <label>Titel: </label>
+        <input type="text" name="type" th:value="${spirit.title}">
+    </p>
+    <p>
+        <label>Alcohol per Volume: </label>
+        <input type="text" name="type" th:value="${spirit.apv}">
+    </p>
+    <p>
+        <label>Months: </label>
+        <input type="text" name="type" th:value="${spirit.ageInMonth}">
+    </p>
+    <p>
+        <label>Prise: </label>
+        <input type="text" name="type" th:value="${spirit.prise}">
+    </p>
+    <button type="submit">Uppdatera</button>
+</form>
+</body>
+</html>
