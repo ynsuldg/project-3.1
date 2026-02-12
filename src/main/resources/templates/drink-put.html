@@ -1,0 +1,9 @@
+<h1>Edit Drink</h1>
+<form th:action="@{/drinks/{id}(id=${drink.id})}" th:object="${drink}" method="post">
+    <input type="hidden" name="_method" value="put"/>
+    Name: <input type="text" th:field="*{name}"/> <br>
+    Expire Date: <input type="date" th:field="*{expireDate}"/> <br>
+    Price: <input type="number" step="0.01" th:field="*{price}"/> <br>
+    <button type="submit">Update</button>
+</form>
+<a th:href="@{/drinks}">Cancel</a>
