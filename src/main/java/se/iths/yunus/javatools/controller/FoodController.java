@@ -49,19 +49,25 @@ public class FoodController {
         return "redirect:/foods";
     }
     // =========================UPDATE ===================================
-    @GetMapping("/eidt/{id}")
+    @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
-        model.addAttribute("food", foodService.findById(id));
-        return "edit-food";
+        try {
+            model.addAttribute("food", foodService.findById(id));
+            return "edit-food";
+        } catch (RuntimeException ex) {
+            model.addAttribute("errorMessage", ex.getMessage());
+            return "show-food";
+        }
     }
 
     @PostMapping("edit/{id}")
     public String updateFood(@PathVariable Long id, @ModelAttribute Food updated, Model model){
-        try {foodService.update(id, updated);
-        } catch (RuntimeException ex) {
+        try {
+            foodService.update(id, updated);
+            } catch (RuntimeException ex) {
             model.addAttribute("errorMessage", ex.getMessage());
             return "edit-food";
-        }
+            }
 
         return "redirect:/foods/";
     }
