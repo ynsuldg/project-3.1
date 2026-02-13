@@ -10,6 +10,7 @@ import se.iths.yunus.javatools.service.DrinkService;
 @Controller
 @RequestMapping("/drinks")
 public class DrinkController {
+
     private final DrinkService drinkService;
 
     @Autowired
@@ -17,30 +18,49 @@ public class DrinkController {
         this.drinkService = drinkService;
     }
 
+    // LIST ALL
     @GetMapping
     public String getAllDrinks(Model model) {
         model.addAttribute("drinks", drinkService.getAllDrinks());
-        return "drinks";
+        return "drink-findall";
     }
 
+    // SHOW ONE
     @GetMapping("/{id}")
     public String getDrink(@PathVariable Long id, Model model) {
         model.addAttribute("drink", drinkService.getDrink(id));
-        return "drinks";
+        return "drink-findbyid";
     }
 
+    // SHOW CREATE FORM
+    @GetMapping("/new")
+    public String showCreateForm(Model model) {
+        model.addAttribute("drink", new Drink());
+        return "drink-post";
+    }
+
+    // CREATE
     @PostMapping
     public String postNewDrink(@ModelAttribute Drink drink) {
-        Drink drink2 = drinkService.postNewDrink(drink);
+        drinkService.postNewDrink(drink);
         return "redirect:/drinks";
     }
 
+    // SHOW EDIT FORM
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        model.addAttribute("drink", drinkService.getDrink(id));
+        return "drink-put";
+    }
+
+    // UPDATE
     @PutMapping("/{id}")
     public String putExistingDrink(@PathVariable Long id, @ModelAttribute Drink drink) {
-        Drink drink2 = drinkService.putExistingDrink(id, drink);
+        drinkService.putExistingDrink(id, drink);
         return "redirect:/drinks";
     }
 
+    // DELETE
     @DeleteMapping("/{id}")
     public String deleteDrink(@PathVariable Long id) {
         drinkService.deleteDrink(id);

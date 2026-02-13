@@ -3,9 +3,10 @@ package se.iths.yunus.javatools.model;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 
 @Entity
-public class Drink { // modell
+public class Drink {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,12 +17,12 @@ public class Drink { // modell
     private BigDecimal price;
 
     @Column(name = "expire_date")
-    private String expireDate;
+    private Date expireDate;
 
     public Drink() {
     }
 
-    public Drink(String name, BigDecimal price, String expireDate) {
+    public Drink(String name, BigDecimal price, Date expireDate) {
         this.name = name;
         this.price = price;
         this.expireDate = expireDate;
@@ -51,11 +52,11 @@ public class Drink { // modell
         this.price = price;
     }
 
-    public String getExpireDate() {
+    public Date getExpireDate() {
         return expireDate;
     }
 
-    public void setExpireDate(String expireDate) {
+    public void setExpireDate(Date expireDate) {
         this.expireDate = expireDate;
     }
 }

@@ -1,7 +1,10 @@
 package se.iths.yunus.javatools.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -13,6 +16,7 @@ public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     @Column(name="has_lactose")
@@ -25,11 +29,11 @@ public class Food {
     private String barcode;
 
     @Column(nullable = false)
-    @Min(0)
     private double price;
 
     @Column(name ="best_before")
     private LocalDate bestBefore;
+
     private int quantity;
 
     public Food() {

@@ -31,9 +31,6 @@ public class FoodService {
     public Food create(Food food) {
         foodValidator.validate(food);
 
-       if(foodRepository.findById(food.getId()).isPresent()){
-           throw new FoodAlreadyExistsException(String.format("A food item with ID: %d already exists", food.getId()));
-       }
        return foodRepository.save(food);
     }
 

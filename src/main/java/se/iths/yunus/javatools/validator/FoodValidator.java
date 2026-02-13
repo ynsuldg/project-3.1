@@ -3,9 +3,11 @@ package se.iths.yunus.javatools.validator;
 
 import org.springframework.stereotype.Component;
 import se.iths.yunus.javatools.exception.InvalidFoodDateException;
+import se.iths.yunus.javatools.exception.InvalidFoodNameException;
 import se.iths.yunus.javatools.exception.InvalidFoodPriceException;
 import se.iths.yunus.javatools.exception.InvalidFoodQuantityException;
 import se.iths.yunus.javatools.model.Food;
+
 
 import java.time.LocalDate;
 
@@ -13,7 +15,7 @@ import java.time.LocalDate;
 public class FoodValidator {
     public void validateName(String name){
         if (name == null || name.isBlank()){
-            throw new InvalidFoodDateException("Food item name cannot be empty.");
+            throw new InvalidFoodNameException("Food item name cannot be empty.");
         }
     }
 
@@ -34,7 +36,7 @@ public class FoodValidator {
             throw new InvalidFoodDateException("Food item date cannot be null.");
         }
         if(date.isBefore(LocalDate.now())){
-            throw new InvalidFoodQuantityException("Best-before date can ont be in the past.");
+            throw new InvalidFoodDateException("Best-before date cannot be in the past.");
         }
     }
 
