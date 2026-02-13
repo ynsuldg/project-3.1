@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Food</title>
+    <title>Edit Food</title>
 </head>
 <body>
-<h1>Create Food</h1>
-<form action="#" th:action="@{/foods/create}" th:object="${food}" method="post">
+<h1>Edit Food</h1>
+<div th:if="${errorMessage}" style="color:red; font-weight:bold;">
+    <p th:text="${errorMessage}"></p>
+</div>
+<form th:action="@{/foods/edit/{id}(id=${food.id})}" th:object="${food}" method="post">
   Name: <input type="text" th:field="*{name}" required><br>
   Barcode: <input type="text" th:field="*{barcode}"><br>
   Price: <input type="number" step="0.01" th:field="*{price}" required><br>

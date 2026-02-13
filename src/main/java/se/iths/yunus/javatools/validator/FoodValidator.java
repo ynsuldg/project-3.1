@@ -36,7 +36,7 @@ public class FoodValidator {
             throw new InvalidFoodDateException("Food item date cannot be null.");
         }
         if(date.isBefore(LocalDate.now())){
-            throw new InvalidFoodDateException("Best-before date can ont be in the past.");
+            throw new InvalidFoodDateException("Best-before date cannot be in the past.");
         }
     }
 

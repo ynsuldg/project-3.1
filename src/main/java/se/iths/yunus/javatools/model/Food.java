@@ -16,7 +16,7 @@ public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message="Name cannot be empty.")
+
     private String name;
 
     @Column(name="has_lactose")
@@ -29,14 +29,11 @@ public class Food {
     private String barcode;
 
     @Column(nullable = false)
-    @PositiveOrZero(message="Price cannot be negative.")
     private double price;
 
     @Column(name ="best_before")
-    @Future(message="Best-before date must be in the future")
     private LocalDate bestBefore;
 
-    @PositiveOrZero(message="Quantity cannot be negative.")
     private int quantity;
 
     public Food() {
