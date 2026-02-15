@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alla pizzor</title>
+</head>
+<body>
+<h1>Alla Pizzor</h1>
+
+<table border="1">
+    <tr>
+        <th>Namn</th>
+        <th>Topping</th>
+        <th>Ost</th>
+        <th>Pris</th>
+        <th>Alternativ</th>
+    </tr>
+    <tr th:each="pizza : ${pizzas}">
+        <td th:text="${pizza.name}" style="text-transform: capitalize;"></td>
+        <td th:text="${pizza.topping}" style="text-transform: capitalize;"></td>
+        <td th:text="${pizza.cheese}" style="text-transform: capitalize;"></td>
+        <td th:text="${pizza.price}"></td>
+        <td>
+            <a th:href="@{/pizzas/{id}(id=${pizza.id})}">Visa</a>
+            <a th:href="@{/pizzas/{id}/edit(id=${pizza.id})}">Redigera</a>
+            <form th:action="@{/pizzas/{id}(id=${pizza.id})}" method="post" style="display:inline">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Ta bort</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<a href="/pizzas/new">Skapa ny Pizza</a>
+
+</body>
+</html>

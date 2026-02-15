@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skapa pizza</title>
+</head>
+<body>
+
+<h1>Skapa ny Pizza</h1>
+
+<form th:action="@{/pizzas}" th:object="${pizza}" method="post">
+    Namn: <input type="text" th:field="*{name}" style="text-transform: capitalize;"><br>
+    Topping: <input type="text" th:field="*{topping}" style="text-transform: capitalize;"><br>
+    Ost: <input type="text" th:field="*{cheese}" style="text-transform: capitalize;"><br>
+    Pris: <input type="number" th:field="*{price}"><br>
+
+    <button type="submit">Skapa</button>
+</form>
+<a th:href="@{/pizzas}">Tillbaks till Pizza Meny</a>
+
+</body>
+</html>

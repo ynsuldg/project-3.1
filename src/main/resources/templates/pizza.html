@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="sv" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Information</title>
+</head>
+<body>
+
+<h1 th:text="${pizza.name}" style="text-transform: capitalize;">Pizza namn</h1>
+
+<p><strong>Topping:</strong>
+    <span th:text="${pizza.topping}" style="text-transform: capitalize;">Topping</span>
+</p>
+
+<p><strong>Ost:</strong>
+    <span th:text="${pizza.cheese}" style="text-transform: capitalize;">Ost</span>
+</p>
+
+<p><strong>Pris:</strong>
+    <span th:text="${pizza.price}">Pris</span> kr
+</p>
+
+<a th:href="@{/pizzas/{id}/edit(id=${pizza.id})}">Redigera</a>
+<br>
+<a th:href="@{/pizzas}">Tillbaka till Pizza Meny</a>
+
+</body>
+</html>

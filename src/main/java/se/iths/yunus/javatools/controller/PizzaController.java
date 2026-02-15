@@ -65,7 +65,7 @@ public class PizzaController {
     @GetMapping("/{id}/edit")
     public String showEditForm(@PathVariable Long id, Model model) {
         model.addAttribute("pizza", pizzaService.getPizza(id));
-        return "edit pizza";
+        return "edit-pizza";
     }
 
 
