@@ -24,7 +24,8 @@ public class DrinkService {
     }
 
     public Drink getDrink(Long id) {
-        return drinkRepository.findById(id).orElseThrow(() -> new DrinkNotFoundException("Drink with id " + id + " not found"));
+        return drinkRepository.findById(id)
+                .orElseThrow(() -> new DrinkNotFoundException("Drink with id " + id + " not found"));
     }
 
     public Drink postNewDrink(Drink drink) {
@@ -33,12 +34,19 @@ public class DrinkService {
     }
 
     public Drink putExistingDrink(Long id, Drink drink) {
+        Drink existing = drinkRepository.findById(id).orElseThrow(() -> new DrinkNotFoundException("Drink with id " + id + " not found"));
+
         drinkValidator.validate(drink);
+
         drink.setId(id);
+
         return drinkRepository.save(drink);
     }
 
     public void deleteDrink(Long id) {
+        if (!drinkRepository.existsById(id)) {
+            throw new DrinkNotFoundException("Drink with id " + id + " not found");
+        }
         drinkRepository.deleteById(id);
     }
 }

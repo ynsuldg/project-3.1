@@ -1,4 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Drink Details</title>
+</head>
+<body>
+
+<h1>Drink Details</h1>
+
+<p>ID: <span th:text="${drink.id}"></span></p>
 <p>Name: <span th:text="${drink.name}"></span></p>
-<p>Expire Date: <span th:text="${drink.expireDate}"></span></p>
+<p>Flavour: <span th:text="${drink.flavour}"></span></p>
 <p>Price: <span th:text="${drink.price}"></span></p>
-<a th:href="@{/drinks}">Back</a>
+<p>Expire Date: <span th:text="${drink.expireDate}"></span></p>
+
+<a th:href="@{/drinks}">Back to All Drinks</a> |
+<a th:href="@{/drinks/edit/{id}(id=${drink.id})}">Edit</a>
+
+<form th:action="@{/drinks/{id}(id=${drink.id})}" method="post" style="display:inline">
+    <input type="hidden" name="_method" value="delete"/>
+    <button type="submit">Delete</button>
+</form>
+
+</body>
+</html>

@@ -10,20 +10,19 @@ public class Drink {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
+    private String flavour;
     @Column(nullable = false)
     private BigDecimal price;
-
     @Column(name = "expire_date")
     private Date expireDate;
 
     public Drink() {
     }
 
-    public Drink(String name, BigDecimal price, Date expireDate) {
+    public Drink(String name, String flavour, BigDecimal price, Date expireDate) {
         this.name = name;
+        this.flavour = flavour;
         this.price = price;
         this.expireDate = expireDate;
     }
@@ -42,6 +41,14 @@ public class Drink {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFlavour() {
+        return flavour;
+    }
+
+    public void setFlavour(String flavour) {
+        this.flavour = flavour;
     }
 
     public BigDecimal getPrice() {

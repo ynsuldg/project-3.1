@@ -32,6 +32,13 @@ public class DrinkController {
         return "drink-findbyid";
     }
 
+    // HANDLE FORM SUBMIT FROM INDEX PAGE
+    @GetMapping("/findbyid")
+    public String findById(@RequestParam Long id) {
+        // Redirect to /drinks/{id}
+        return "redirect:/drinks/" + id;
+    }
+
     // SHOW CREATE FORM
     @GetMapping("/new")
     public String showCreateForm(Model model) {

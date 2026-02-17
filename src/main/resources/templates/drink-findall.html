@@ -1,22 +1,42 @@
-<table>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Drinks</title>
+</head>
+<body>
+
+<h1>All Drinks</h1>
+
+<a th:href="@{/drinks/new}">Create New Drink</a>
+
+<br><br>
+
+<table border="1">
     <tr>
+        <th>ID</th>
         <th>Name</th>
-        <th>Expire Date</th>
+        <th>Flavour</th>
         <th>Price</th>
+        <th>Expire Date</th>
         <th>Actions</th>
     </tr>
+
     <tr th:each="drink : ${drinks}">
-        <td th:text="${drink.name}">Name</td>
-        <td th:text="${drink.expireDate}">Expire</td>
-        <td th:text="${drink.price}">Price</td>
+        <td th:text="${drink.id}"></td>
+        <td th:text="${drink.name}"></td>
+        <td th:text="${drink.flavour}"></td>
+        <td th:text="${drink.price}"></td>
+        <td th:text="${drink.expireDate}"></td>
         <td>
-            <a th:href="@{/drinks/edit/{id}(id=${drink.id})}">Edit</a>
+            <a th:href="@{/drinks/{id}(id=${drink.id})}">View</a> |
+            <a th:href="@{/drinks/edit/{id}(id=${drink.id})}">Edit</a> |
             <form th:action="@{/drinks/{id}(id=${drink.id})}" method="post" style="display:inline">
                 <input type="hidden" name="_method" value="delete"/>
                 <button type="submit">Delete</button>
             </form>
-            <a th:href="@{/drinks/{id}(id=${drink.id})}">View</a>
         </td>
     </tr>
 </table>
-<a th:href="@{/drinks/new}">Create New Drink</a>
+
+</body>
+</html>
