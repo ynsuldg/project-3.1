@@ -51,6 +51,8 @@ public class SpiritService {
     }
 
     public void deleteSpirit(Long id) {
-        spiritRepository.deleteById(id);
+        Spirit spirit = spiritRepository.findById(id)
+                .orElseThrow(() -> new SpiritNotFoundException("No spirit can be find " + id));
+        spiritRepository.delete(spirit);
     }
 }

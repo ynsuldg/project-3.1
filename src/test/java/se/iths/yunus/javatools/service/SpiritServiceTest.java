@@ -47,18 +47,6 @@ class SpiritServiceTest {
     }
 
     @Test
-    public void testGetAllSpirit() {
-        //Arrange
-        when(spiritRepository.findAll()).thenReturn(spirits);
-        //Act
-        List<Spirit> result = spiritService.getAllSpirit();
-        //Assert
-        assertEquals(2, result.size());
-        //Verify
-        verify(spiritRepository).findAll();
-    }
-
-    @Test
     public void testCreateSpirit() {
         //Arrange
         when(spiritRepository.save(spirit)).thenReturn(spirit);
@@ -73,6 +61,48 @@ class SpiritServiceTest {
     }
 
     @Test
+    public void testCreateInvalidSpiritNameNull() {
+        //Arrange
+        Spirit invalidSpirit = new Spirit(4L, "",
+                "Invalid", -5.0, -1, -100.0);
+        //Act & Assert
+        try {
+            spiritService.createSpirit(invalidSpirit);
+        } catch (Exception e) {
+            assertEquals("Spirit type cannot be null!", e.getMessage());
+        }
+        //Verify
+        verify(spiritValidator).validated(invalidSpirit);
+    }
+
+    @Test
+    public void testSpiritMaxAPVExceeded() {
+        //Arrange
+        Spirit invalidSpirit = new Spirit(5L, "Vodka",
+                "Invalid Vodka", 150.0, 0, 50.0);
+        //Act & Assert
+        try {
+            spiritService.createSpirit(invalidSpirit);
+        } catch (Exception e) {
+            assertEquals("Alcohol Per Volume cannot be greater then 100.0%", e.getMessage());
+        }
+        //Verify
+        verify(spiritValidator).validated(invalidSpirit);
+    }
+
+    @Test
+    public void testGetAllSpirit() {
+        //Arrange
+        when(spiritRepository.findAll()).thenReturn(spirits);
+        //Act
+        List<Spirit> result = spiritService.getAllSpirit();
+        //Assert
+        assertEquals(2, result.size());
+        //Verify
+        verify(spiritRepository).findAll();
+    }
+
+    @Test
     public void testGetSpiritId() {
         //Arrange
         when(spiritRepository.findById(1L)).thenReturn(Optional.of(redWine));
@@ -82,6 +112,20 @@ class SpiritServiceTest {
         assertEquals("Red Wine", result.getType());
         //Verify
         verify(spiritRepository).findById(1L);
+    }
+
+    @Test
+    public void testGetSpiritIdNotFound() {
+        //Arrange
+        when(spiritRepository.findById(99L)).thenReturn(Optional.empty());
+        //Act & Assert
+        try {
+            spiritService.getSpiritId(99L);
+        } catch (Exception e) {
+            assertEquals("No Spirit 99", e.getMessage());
+        }
+        //Verify
+        verify(spiritRepository).findById(99L);
     }
 
     @Test
@@ -112,7 +156,9 @@ class SpiritServiceTest {
         //Act
         spiritService.deleteSpirit(2L);
         //Assert
+        assertEquals("White Wine", whiteWine.getType());
         //Verify
+        verify(spiritRepository).findById(2L);
         verify(spiritRepository).delete(whiteWine);
     }
 }

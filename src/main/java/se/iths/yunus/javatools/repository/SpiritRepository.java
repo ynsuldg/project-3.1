@@ -4,9 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import se.iths.yunus.javatools.model.Spirit;
 
-import java.util.List;
-
 @Repository
 public interface SpiritRepository extends JpaRepository<Spirit, Long> {
-    List<Spirit> getAllSpirit();
 }
