@@ -20,6 +20,7 @@ public class PizzaService {
         this.pizzaValidator = pizzaValidator;
     }
 
+
     public List<Pizza> getAllPizza() {
         return pizzaRepository.findAll();
     }
@@ -46,7 +47,7 @@ public class PizzaService {
         existing.setTopping(pizza.getTopping());
         existing.setCheese(pizza.getCheese());
         existing.setPrice(pizza.getPrice());
-        
+
         return pizzaRepository.save(existing);
 
 

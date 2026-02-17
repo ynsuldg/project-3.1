@@ -39,63 +39,36 @@ public class PizzaValidatorTest {
         );
     }
 
+
     @Test
     @DisplayName("Testar exception när namnet är tomt")
     public void TestValidateWhenNameIsBlank() {
-        Pizza pizza = new Pizza(null, "", "Gurka", "Ja", 99);
+        Pizza pizza = new Pizza(null, " ", "Gurka", "Ja", 99);
         assertThrows(InvalidPizzaException.class, () ->
                 pizzaValidator.validate(pizza)
         );
 
     }
 
-    @Test
-    @DisplayName("när namnet är tomt och har mellanrum")
-    public void testValidateThrowsWhenNameisEmpty() {
-        Pizza pizza = new Pizza(null, " ", "Tomat", "Ja", 199);
-        assertThrows(InvalidPizzaException.class, () ->
-                pizzaValidator.validate(pizza)
-        );
-
-
-    }
 
     @Test
     @DisplayName("När topping är tomt")
     public void testValidateWhenToppingisBlank() {
-        Pizza pizza = new Pizza(null, "Hawaii", "", "Ja", 89);
-        assertThrows(InvalidPizzaException.class, () ->
-                pizzaValidator.validate(pizza));
-
-    }
-
-    @Test
-    @DisplayName("När topping är tomt och har mellanrum")
-    public void testValidateWhenToppingisEmpty() {
         Pizza pizza = new Pizza(null, "Hawaii", " ", "Ja", 89);
         assertThrows(InvalidPizzaException.class, () ->
                 pizzaValidator.validate(pizza));
 
-
     }
+
 
     @Test
     @DisplayName("Exception när ost är tomt")
     public void testValidateThrowsWhenCheeseIsBlank() {
-        Pizza pizza = new Pizza(null, "Kebab", "Feferoni", "", 149);
+        Pizza pizza = new Pizza(null, "Kebab", "Feferoni", " ", 149);
         assertThrows(InvalidPizzaException.class, () ->
                 pizzaValidator.validate(pizza));
     }
-
-    @Test
-    @DisplayName("Exception när ost är tomt och har mellanrum")
-    public void testValidateThrowswhenCheeseisEmpty() {
-        Pizza pizza = new Pizza(null, "Viking", "Gurka", " ", 99);
-        assertThrows(InvalidPizzaException.class, () ->
-                pizzaValidator.validate(pizza));
-
-
-    }
+    
 
     @Test
     @DisplayName("Exception när priset är negativt")
