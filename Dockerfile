@@ -2,7 +2,7 @@ FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
-COPY target/java-tools-1.0.0.jar app.jar
+COPY target/java-tools-0.0.1.jar app.jar
 
 EXPOSE 8080
 
