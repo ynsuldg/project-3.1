@@ -41,7 +41,7 @@ public class SpiritController {
     @PutMapping("/{id}")
     public String updateSpirit(@PathVariable Long id, @ModelAttribute Spirit spirit) {
         Spirit spirit1 = spiritService.updateSpirit(id, spirit);
-        return "rediret:/spirits";
+        return "redirect:/spirits";
     }
 
     @GetMapping("/{id}/edit")
@@ -54,6 +54,6 @@ public class SpiritController {
     @DeleteMapping("/{id}")
     public String deleteSpirit(@PathVariable Long id) {
         spiritService.deleteSpirit(id);
-        return "rediret:/spirits";
+        return "redirect:/spirits";
     }
 }

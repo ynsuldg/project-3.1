@@ -2,33 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Uppdatera Spirit</title>
+    <title>Update Spirit</title>
 </head>
 <body>
-<h1>Uppdatera Spirit</h1>
+<h1>Update Spirit</h1>
 <form method="post" th:action="@{/spirits/{id}(id=${spirit.id})}">
     <input type="hidden" name="_method" value="PUT">
     <p>
-        <label>Typ av Spirit: </label>
+        <label>Type of Spirit: </label>
         <input type="text" name="type" th:value="${spirit.type}">
     </p>
     <p>
-        <label>Titel: </label>
-        <input type="text" name="type" th:value="${spirit.title}">
+        <label>Name: </label>
+        <input type="text" name="title" th:value="${spirit.title}">
     </p>
     <p>
         <label>Alcohol per Volume: </label>
-        <input type="text" name="type" th:value="${spirit.apv}">
+        <input type="number" step="0.1" name="apv" th:value="${spirit.apv}">
     </p>
     <p>
         <label>Months: </label>
-        <input type="text" name="type" th:value="${spirit.ageInMonth}">
+        <input type="number" name="ageInMonth" th:value="${spirit.ageInMonth}">
     </p>
     <p>
-        <label>Prise: </label>
-        <input type="text" name="type" th:value="${spirit.prise}">
+        <label>Price: </label>
+        <input type="number" step="0.01" name="price" th:value="${spirit.price}">
     </p>
-    <button type="submit">Uppdatera</button>
+    <button type="submit">Update</button>
 </form>
 </body>
 </html>

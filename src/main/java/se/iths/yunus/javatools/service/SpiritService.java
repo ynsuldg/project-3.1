@@ -1,12 +1,12 @@
 package se.iths.yunus.javatools.service;
 
 import org.springframework.stereotype.Service;
+import se.iths.yunus.javatools.exception.SpiritNotFoundException;
 import se.iths.yunus.javatools.model.Spirit;
 import se.iths.yunus.javatools.repository.SpiritRepository;
 import se.iths.yunus.javatools.validator.SpiritValidator;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class SpiritService {
@@ -31,13 +31,13 @@ public class SpiritService {
     //Get en
     public Spirit getSpiritId(Long id) {
         return spiritRepository
-                .findById(id).orElseThrow(() -> new NoSuchElementException("No Spirit" + id));
+                .findById(id).orElseThrow(() -> new SpiritNotFoundException("No Spirit" + id));
     }
 
     public Spirit updateSpirit(Long id, Spirit spirit) {
         Spirit update = spiritRepository.findById(id)
 
-                .orElseThrow(() -> new NoSuchElementException("No spirit can be find " + id));
+                .orElseThrow(() -> new SpiritNotFoundException("No spirit can be find " + id));
 
         spiritValidator.validated(spirit);
 
@@ -45,12 +45,14 @@ public class SpiritService {
         update.setTitle(spirit.getTitle());
         update.setApv(spirit.getApv());
         update.setAgeInMonth(spirit.getAgeInMonth());
-        update.setPrise(spirit.getPrise());
+        update.setPrice(spirit.getPrice());
 
-        return spiritRepository.save(spirit);
+        return spiritRepository.save(update);
     }
 
     public void deleteSpirit(Long id) {
-        spiritRepository.deleteById(id);
+        Spirit spirit = spiritRepository.findById(id)
+                .orElseThrow(() -> new SpiritNotFoundException("No spirit can be find " + id));
+        spiritRepository.delete(spirit);
     }
 }

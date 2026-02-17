@@ -14,18 +14,18 @@ public class Spirit {
     private String title;
     private double apv;
     private int ageInMonth;
-    private double prise;
+    private double price;
 
     public Spirit() {
     }
 
-    public Spirit(Long id, String type, String title, double apv, int ageInMonth, double prise) {
+    public Spirit(Long id, String type, String title, double apv, int ageInMonth, double price) {
         this.id = id;
         this.type = type;
         this.title = title;
         this.apv = apv;
         this.ageInMonth = ageInMonth;
-        this.prise = prise;
+        this.price = price;
     }
 
     public Long getId() {
@@ -68,11 +68,11 @@ public class Spirit {
         this.ageInMonth = ageInMonth;
     }
 
-    public double getPrise() {
-        return prise;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPrise(double prise) {
-        this.prise = prise;
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

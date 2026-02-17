@@ -15,7 +15,7 @@ public class SpiritValidator {
         validatedName(spirit.getTitle());
         validatedAPV(spirit.getApv());
         validatedAge(spirit.getAgeInMonth());
-        validatedPrise(spirit.getPrise());
+        validatedPrice(spirit.getPrice());
     }
 
     private void validatedType(String type) {
@@ -45,9 +45,9 @@ public class SpiritValidator {
         }
     }
 
-    private void validatedPrise(double prise) {
-        if (prise < 0) {
-            throw new InvalidSpiritPriseException("Spirit prise cannot be negativ!");
+    private void validatedPrice(double price) {
+        if (price < 0) {
+            throw new InvalidSpiritPriceException("Spirit price cannot be negativ!");
         }
     }
 }

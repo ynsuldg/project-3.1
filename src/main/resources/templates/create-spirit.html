@@ -2,30 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Skapa Sprit</title>
+    <title>Create Spirit</title>
 </head>
 <body>
-<h1>Skapa eller Lägg till Sprit</h1>
-<form method="post" th:action="@{spirits}">
+<h1>Create or add Spirit</h1>
+<form method="post" th:action="@{/spirits}">
     <p>
-        <label>Typ: </label>
+        <label>Type: </label>
         <input type="text" name="type">
     </p>
     <p>
-        <label>Titel: </label>
+        <label>Name: </label>
         <input type="text" name="title">
     </p>
     <p>
         <label>Alcohol per Volume: </label>
-        <input type="text" name="apv">
+        <input type="number" step="0.1" name="apv">
     </p>
     <p>
         <label>Months: </label>
-        <input type="text" name="ageInMonth">
+        <input type="number" name="ageInMonth">
     </p>
     <p>
-        <label>Prise: </label>
-        <input type="text" name="prise">
+        <label>Price: </label>
+        <input type="number" step="0.01" name="price">
     </p>
     <button type="submit">Spara</button>
 </form>

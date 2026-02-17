@@ -2,16 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sprit</title>
+    <title>Spirit</title>
 </head>
 <body>
-<h1>Sprit Menu</h1>
+<h1>Spirit Menu</h1>
 <ul>
-    <li th:each="spirit : ${sprits}">
+    <li th:each="spirit : ${spirits}">
         <span th:text="${spirit.title}"></span>
-        <a th:href="@{/sprits/{id}(id=${spirit.id})}">Visa Info</a>
+        <a th:href="@{/spirits/{id}(id=${spirit.id})}">Show Info</a>
         <span> - </span>
-        <a th:href="@{/sprits/{id}/edit(id=${spirit.id})}">Uppdatera</a>
+        <a th:href="@{/spirits/{id}/edit(id=${spirit.id})}">Update</a>
+        <span> - </span>
+        <form th:action="@{/spirits/{id}(id=${spirit})}" method="post"
+              style="display:inline;">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit">Delete</button>
+        </form>
     </li>
 </ul>
 </body>
