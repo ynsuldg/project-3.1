@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.iths.yunus.javatools.exception.FoodAlreadyExistsException;
 import se.iths.yunus.javatools.exception.FoodNotFoundException;
 import se.iths.yunus.javatools.model.Food;
 
