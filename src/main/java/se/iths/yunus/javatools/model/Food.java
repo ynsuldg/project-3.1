@@ -39,8 +39,7 @@ public class Food {
     public Food() {
     }
 
-    public Food(Long id, String name, boolean hasLactose, boolean hasSeafood, String barcode, double price, LocalDate bestBefore, int quantity) {
-        this.id = id;
+    public Food(String name, boolean hasLactose, boolean hasSeafood, String barcode, double price, LocalDate bestBefore, int quantity) {
         this.name = name;
         this.hasLactose = hasLactose;
         this.hasSeafood = hasSeafood;

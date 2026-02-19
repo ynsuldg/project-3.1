@@ -37,7 +37,7 @@ public class FoodServiceTest {
 
     @BeforeEach
     public void setUp(){
-        foodSample = new Food(1L, "Milk", true,
+        foodSample = new Food("Milk", true,
                 false,
                 "01234567892",29.90 ,
                 LocalDate.now().plusDays(5),

@@ -30,8 +30,14 @@ public class FoodController {
     @GetMapping("/{id}")
     public String showFood(@PathVariable Long id, Model model) {
         log.info("GET /foods/{} - showing food details.", id);
-        model.addAttribute("food", foodService.findById(id));
-        return "show-food";
+        try {
+            model.addAttribute("food", foodService.findById(id));
+            return "show-food";
+        } catch(RuntimeException ex){
+            log.warn("Food with id {} not found", id);
+            model.addAttribute("errorMessage", ex.getMessage());
+            return "show-food";
+        }
     }
     // ======================= CREATE ============================
     @GetMapping("/create")

@@ -20,7 +20,7 @@ public class FoodValidatorTest {
     @BeforeEach
     public void setUp(){
         foodValidator = new FoodValidator();
-        foodSample = new Food(1L,"Milk", true,
+        foodSample = new Food("Milk", true,
                 false, "123456", 25.0,
                 LocalDate.now().plusDays(10), 20);
     }

@@ -5,6 +5,12 @@
     <title>Show Food Information</title>
 </head>
 <body>
+<div th:if="${food == null}">
+    <h1>Food not found</h1>
+    <p th:if="${errorMesage!= null}" th:text="${errorMessage}"></p>
+    <a href="/foods">Back to list</a>
+</div>
+<div th:if="${food!=null}">
 <h1 th:text="${food.name}"></h1>
 <p><strong>Barcode:</strong><span th:text="${food.barcode}"></span></p>
 <p><strong>Price:</strong><span th:text="${food.price}"></span></p>
@@ -16,6 +22,7 @@
 
 <a th:href="@{/foods/edit/{id}(id=${food.id})}">Edit</a>
 <a href="/foods">Back to list</a>
+</div>
 
 </body>
 </html>
