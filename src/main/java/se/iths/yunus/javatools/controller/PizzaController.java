@@ -49,7 +49,7 @@ public class PizzaController {
 
     }
 
-    @PutMapping("/{id}")
+    @PostMapping("{id}")
     public String updatePizza(@PathVariable Long id, @ModelAttribute Pizza pizza) {
         pizzaService.updatePizza(id, pizza);
         return "redirect:/pizzas";
