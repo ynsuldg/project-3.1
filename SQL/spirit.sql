@@ -8,3 +8,4 @@ CREATE TABLE spirit
     Price      FLOAT,
     PRIMARY KEY (SpiritID)
 );
+
