@@ -2,6 +2,8 @@ package se.iths.yunus.javatools.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import se.iths.yunus.javatools.exception.DrinkNotFoundException;
 import se.iths.yunus.javatools.model.Drink;
 import se.iths.yunus.javatools.repository.DrinkRepository;
@@ -19,8 +21,12 @@ import static org.mockito.Mockito.*;
 
 class DrinkServiceTest {
 
+    @Mock
     private DrinkRepository drinkRepository;
+    @Mock
     private DrinkValidator drinkValidator;
+
+    @InjectMocks
     private DrinkService drinkService;
 
     @BeforeEach
