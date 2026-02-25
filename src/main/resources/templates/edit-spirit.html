@@ -1,34 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Update Spirit</title>
+    <title>Edit Spirit</title>
 </head>
 <body>
-<h1>Update Spirit</h1>
-<form method="post" th:action="@{/spirits/{id}(id=${spirit.id})}">
-    <input type="hidden" name="_method" value="PUT">
-    <p>
-        <label>Type of Spirit: </label>
-        <input type="text" name="type" th:value="${spirit.type}">
-    </p>
-    <p>
-        <label>Name: </label>
-        <input type="text" name="title" th:value="${spirit.title}">
-    </p>
-    <p>
-        <label>Alcohol per Volume: </label>
-        <input type="number" step="0.1" name="apv" th:value="${spirit.apv}">
-    </p>
-    <p>
-        <label>Months: </label>
-        <input type="number" name="ageInMonth" th:value="${spirit.ageInMonth}">
-    </p>
-    <p>
-        <label>Price: </label>
-        <input type="number" step="0.01" name="price" th:value="${spirit.price}">
-    </p>
+<h1>Edit Spirit</h1>
+<form th:action="@{/spirits/{id}(id=${spirit.id})}" method="post">
+    <p>Type: <input type="text" name="type" th:value="${spirit.type}"/></p>
+    <p>Name: <input type="text" name="title" th:value="${spirit.title}"/></p>
+    <p>Alcohol per Volume: <input type="number" step="0.1" name="apv" th:value="${spirit.apv}"/></p>
+    <p>Months: <input type="number" name="ageInMonth" th:value="${spirit.ageInMonth}"/></p>
+    <p>Price: <input type="number" step="0.01" name="price" th:value="${spirit.price}"/></p>
     <button type="submit">Update</button>
 </form>
+<a th:href="@{/spirits}">Back to list</a>
 </body>
 </html>

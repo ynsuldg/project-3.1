@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Spirit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "spiritid")
+    @Column(name = "spirit_id")
     private Long id;
     private String type;
     @Column(name = "name")
