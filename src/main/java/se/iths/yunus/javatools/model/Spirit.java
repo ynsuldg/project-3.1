@@ -13,6 +13,7 @@ public class Spirit {
     @Column(name = "name")
     private String title;
     private double apv;
+    @Column(name = "age_in_month")
     private int ageInMonth;
     private double price;
 
