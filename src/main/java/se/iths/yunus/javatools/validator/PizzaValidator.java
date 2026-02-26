@@ -7,6 +7,7 @@ import se.iths.yunus.javatools.model.Pizza;
 @Component
 public class PizzaValidator {
 
+    //Huvudmetod för att validera en Pizza
     public void validate(Pizza pizza) {
         if (pizza == null) {
             throw new InvalidPizzaException("Pizza cannot be null");
@@ -37,7 +38,7 @@ public class PizzaValidator {
 
     private void validatePrice(int price) {
         if (price < 0) {
-            throw new InvalidPizzaException("Pris kan inte vara negativt");
+            throw new InvalidPizzaException("Pris får inte vara negativt");
 
         }
 

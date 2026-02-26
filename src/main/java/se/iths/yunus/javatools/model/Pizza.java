@@ -2,23 +2,28 @@ package se.iths.yunus.javatools.model;
 
 import jakarta.persistence.*;
 
+
+// Entity = pizza table i min DB
 @Entity
-@Table(name = "pizza")
+@Table(name = "pizza")  //kopplar klassen till min table i DB
 public class Pizza {
 
-
+    // primärnyckel
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // tom konstrukor för JPA
     public Pizza() {
     }
 
+    //attribut
     private String name;
     private String topping;
     private String cheese;
     private int price;
 
+    // konstruktor
     public Pizza(Long id, String name, String topping, String cheese, int price) {
         this.id = id;
         this.name = name;
