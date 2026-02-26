@@ -74,7 +74,7 @@ public class FoodController {
         }
     }
 
-    @PostMapping("edit/{id}")
+    @PostMapping("/edit/{id}")
     public String updateFood(@PathVariable Long id, @ModelAttribute Food updated, Model model){
         log.info("POST /foods/edit/{} - updating food.",id);
         try {
@@ -85,7 +85,7 @@ public class FoodController {
             return "edit-food";
             }
 
-        return "redirect:/foods/";
+        return "redirect:/foods";
     }
 
     // =============================DELETE ====================================
