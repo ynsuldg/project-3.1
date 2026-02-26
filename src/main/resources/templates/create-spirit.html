@@ -1,33 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Create Spirit</title>
 </head>
 <body>
-<h1>Create or add Spirit</h1>
-<form method="post" th:action="@{/spirits}">
-    <p>
-        <label>Type: </label>
-        <input type="text" name="type">
-    </p>
-    <p>
-        <label>Name: </label>
-        <input type="text" name="title">
-    </p>
-    <p>
-        <label>Alcohol per Volume: </label>
-        <input type="number" step="0.1" name="apv">
-    </p>
-    <p>
-        <label>Months: </label>
-        <input type="number" name="ageInMonth">
-    </p>
-    <p>
-        <label>Price: </label>
-        <input type="number" step="0.01" name="price">
-    </p>
-    <button type="submit">Spara</button>
+<h1>Create Spirit</h1>
+<form th:action="@{/spirits}" method="post">
+    <p>Type: <input type="text" name="type"/></p>
+    <p>Name: <input type="text" name="title"/></p>
+    <p>Alcohol per Volume: <input type="number" step="0.1" name="apv"/></p>
+    <p>Months: <input type="number" name="ageInMonth"/></p>
+    <p>Price: <input type="number" step="0.01" name="price"/></p>
+    <button type="submit">Create</button>
 </form>
+<a th:href="@{/spirits}">Back to list</a>
 </body>
 </html>

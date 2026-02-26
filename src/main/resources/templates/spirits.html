@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Spirit</title>
+    <title>Spirit Menu</title>
 </head>
 <body>
-<h1>Spirit Menu</h1>
+<h1>All Spirits</h1>
+<a th:href="@{/spirits/new}">Add New Spirit</a>
 <ul>
     <li th:each="spirit : ${spirits}">
         <span th:text="${spirit.title}"></span>
-        <a th:href="@{/spirits/{id}(id=${spirit.id})}">Show Info</a>
-        <span> - </span>
-        <a th:href="@{/spirits/{id}/edit(id=${spirit.id})}">Update</a>
-        <span> - </span>
-        <form th:action="@{/spirits/{id}(id=${spirit})}" method="post"
-              style="display:inline;">
-            <input type="hidden" name="_method" value="delete">
+        (<span th:text="${spirit.type}"></span>)
+        <a th:href="@{/spirits/{id}(id=${spirit.id})}">Show</a> |
+        <a th:href="@{/spirits/{id}/edit(id=${spirit.id})}">Edit</a> |
+        <form th:action="@{/spirits/{id}/delete(id=${spirit.id})}" method="post" style="display:inline;">
             <button type="submit">Delete</button>
         </form>
     </li>
