@@ -7,17 +7,18 @@ import se.iths.yunus.javatools.model.Pizza;
 import se.iths.yunus.javatools.service.PizzaService;
 
 @Controller
-@RequestMapping("/pizzas")
+@RequestMapping("/pizzas")  //bas url
 public class PizzaController {
 
-
+    // affärslogik
     private final PizzaService pizzaService;
 
+    //konstruktorinjekttion
     public PizzaController(PizzaService pizzaService) {
         this.pizzaService = pizzaService;
     }
 
-    // hämtar alla pizzor
+    // hämtar alla pizzor, getmapping pga get metod
     @GetMapping
     public String getAllPizzas(Model model) {
         model.addAttribute("pizzas", pizzaService.getAllPizza());
@@ -25,7 +26,7 @@ public class PizzaController {
 
     }
 
-    // hämtar 1 pizza via id
+    // hämtar 1 pizza via id, getmapping pga get metod
     @GetMapping("/{id}")
     public String getPizza(@PathVariable Long id, Model model) {
         model.addAttribute("pizza", pizzaService.getPizza(id));
