@@ -15,7 +15,7 @@ class SpiritValidatorTest {
     @BeforeEach
     void setUp() {
         spiritValidator = new SpiritValidator();
-        validSpirit = new Spirit(1L, "Whisky",
+        validSpirit = new Spirit("Whisky",
                 "Macallan", 40.0, 24, 599.0);
     }
 
@@ -32,7 +32,7 @@ class SpiritValidatorTest {
 
     @Test
     void testInvalidBlankType() {
-        Spirit spirit = new Spirit(1L, "Whisky",
+        Spirit spirit = new Spirit("Whisky",
                 "", 40.0, 24, 599.0);
         assertThrows(InvalidSpiritException.class,
                 () -> spiritValidator.validated(spirit));
@@ -47,7 +47,7 @@ class SpiritValidatorTest {
 
     @Test
     void testInvalidBlankTitle() {
-        Spirit spirit = new Spirit(1L, "",
+        Spirit spirit = new Spirit("",
                 "Macallan", 40.0, 24, 599.0);
         assertThrows(InvalidSpiritException.class,
                 () -> spiritValidator.validated(spirit));
@@ -62,7 +62,7 @@ class SpiritValidatorTest {
 
     @Test
     void testInvalidNegativeAPV() {
-        Spirit spirit = new Spirit(1L, "Whisky",
+        Spirit spirit = new Spirit("Whisky",
                 "Macallan", -5.0, 24, 599.0);
         assertThrows(InvalidSpiritAPVException.class,
                 () -> spiritValidator.validated(spirit));
@@ -77,7 +77,7 @@ class SpiritValidatorTest {
 
     @Test
     void testAPVGreaterThan100() {
-        Spirit spirit = new Spirit(1L, "Whisky",
+        Spirit spirit = new Spirit("Whisky",
                 "Macallan", 150.0, 24, 599.0);
         assertThrows(MaxSpiritAPVExceededException.class,
                 () -> spiritValidator.validated(spirit));

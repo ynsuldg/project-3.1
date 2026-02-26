@@ -20,8 +20,7 @@ public class Spirit {
     public Spirit() {
     }
 
-    public Spirit(Long id, String type, String title, double apv, int ageInMonth, double price) {
-        this.id = id;
+    public Spirit(String type, String title, double apv, int ageInMonth, double price) {
         this.type = type;
         this.title = title;
         this.apv = apv;
