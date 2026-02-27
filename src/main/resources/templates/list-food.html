@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>All Foods</title>
+  <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
 </head>
 <body>
+<div th:replace="~{fragments/navbar :: body}"></div>
+
 <h1> All Foods</h1>
+
+<div class="page-container">
 <table>
   <tr>
     <th>Name</th>
@@ -14,6 +19,8 @@
     <th>Barcode</th>
     <th>Price</th>
     <th>Quantity</th>
+    <th>Best Before</th>
+    <th>Actions</th>
   </tr>
   <tr th:each="food:${foods}">
     <td th:text="${food.name}"></td>
@@ -23,15 +30,16 @@
     <td th:text="${food.price}"></td>
     <td th:text="${food.quantity}"></td>
     <td th:text="${food.bestBefore}"></td>
-    <td>
-       <a th:href="@{/foods/{id}(id=${food.id})}">View</a>
-       <a th:href="@{/foods/edit/{id}(id=${food.id})}">Edit</a>
+    <td class="actions">
+       <a class="btn-link" th:href="@{/foods/{id}(id=${food.id})}">View</a>
+       <a class="btn-link" th:href="@{/foods/edit/{id}(id=${food.id})}">Edit</a>
       <form th:action="@{/foods/delete/{id}(id=${food.id})}" method="post">
         <button type="submit">Delete</button>
       </form>
     </td>
   </tr>
 </table>
-<a href="/foods/create">Create New Food</a>
+<a href="/foods/create" class="btn-link" style="margin-top:20px">Create New Food</a>
+</div>
 </body>
 </html>
