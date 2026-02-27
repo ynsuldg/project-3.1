@@ -3,24 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Food</title>
+    <link rel="stylesheet"   href="../static/style.css" th:href="@{/style.css}">
 </head>
 <body>
+<div th:replace="~{fragments/navbar :: body}"></div>
+
 <h1>Edit Food</h1>
+
+<div class="page-container">
 <div th:if="${errorMessage}" style="color:red; font-weight:bold;">
     <p th:text="${errorMessage}"></p>
 </div>
 <form th:action="@{/foods/edit/{id}(id=${food.id})}" th:object="${food}" method="post">
-  Name: <input type="text" th:field="*{name}" required><br>
-  Barcode: <input type="text" th:field="*{barcode}"><br>
-  Price: <input type="number" step="0.01" th:field="*{price}" required><br>
-  Quantity: <input type="number" th:field="*{quantity}"><br>
-  Best Before: <input type="date" th:field="*{bestBefore}" required> <br>
 
-  Has Lactose: <input type="checkbox" th:field="*{hasLactose}"><br>
-  Has Seafood: <input type="checkbox" th:field="*{hasSeafood}"><br>
+  <label>Name:
+      <input type="text" th:field="*{name}"><br>
+  </label>
+  <label> Barcode:
+      <input type="text" th:field="*{barcode}"><br>
+  </label>
+  <label> Price:
+      <input type="number" step="0.01" th:field="*{price}"><br>
+  </label>
+  <label>Quantity:
+      <input type="number" th:field="*{quantity}"><br>
+  </label>
+  <label>Best Before:
+      <input type="date" th:field="*{bestBefore}"> <br>
+  </label>
 
-  <button type="submit">Save</button>
+  <label>Has Lactose:
+      <input type="checkbox" th:field="*{hasLactose}"><br>
+  </label>
+  <label>Has Seafood:
+      <input type="checkbox" th:field="*{hasSeafood}"><br>
+  </label>
+
+  <button type="submit">Update</button>
 </form>
-<a href="/foods">Back to list</a>
+<a href="/foods" class="back-link">Back to list</a>
+</div>
 </body>
 </html>

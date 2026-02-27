@@ -64,6 +64,7 @@ public class FoodServiceTest {
 
         //Arrange
         doThrow(new InvalidFoodPriceException("Invalid price")).when(foodValidator).validate(foodSample);
+
         //Act + Assert
         assertThrows(InvalidFoodPriceException.class, ()-> foodService.create(foodSample));
 

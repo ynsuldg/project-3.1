@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.iths.yunus.javatools.exception.FoodNotFoundException;
 import se.iths.yunus.javatools.model.Food;
-
 import se.iths.yunus.javatools.repository.FoodRepository;
 import se.iths.yunus.javatools.validator.FoodValidator;
 
@@ -77,12 +76,12 @@ public class FoodService {
         return foodRepository.findByHasSeafoodTrue();
     }
 
-    //Find if the food contains lactose
+    //Find if the food contains lactose or seafood
     public boolean findIfHasLactoseByBarcode(String barcode){
         Food food = this.findByBarcode(barcode);
         return food.getHasLactose();
     }
-    public boolean findIfHasSeaFoodByBarcode(String barcode){
+    public boolean findIfHasSeafoodByBarcode(String barcode){
         Food food = this.findByBarcode(barcode);
         return food.getHasSeafood();
     }

@@ -2,26 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Show Food Information</title>
+    <title>Food Details</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
 </head>
 <body>
-<div th:if="${food == null}">
-    <h1>Food not found</h1>
-    <p th:if="${errorMesage!= null}" th:text="${errorMessage}"></p>
-    <a href="/foods">Back to list</a>
-</div>
-<div th:if="${food!=null}">
-<h1 th:text="${food.name}"></h1>
-<p><strong>Barcode:</strong><span th:text="${food.barcode}"></span></p>
-<p><strong>Price:</strong><span th:text="${food.price}"></span></p>
-<p><strong>Lactose</strong><span th:text="${food.hasLactose}"></span></p>
-<p><strong>Seafood</strong><span th:text="${food.hasSeafood}"></span></p>
-<P><strong>Price</strong><span th:text="${food.price}"></span></P>
-<p><strong>Quantity</strong><span th:text="${food.quantity}"></span></p>
-<p><strong>Best Before Date</strong><span th:text="${food.bestBefore}"></span></p>
+<div th:replace="~{fragments/navbar :: body}"></div>
 
-<a th:href="@{/foods/edit/{id}(id=${food.id})}">Edit</a>
-<a href="/foods">Back to list</a>
+<h1>Food Details</h1>
+<div class="page-container">
+
+    <div th:if="${food == null}">
+        <h2>Food not found</h2>
+        <p th:if="${errorMessage!= null}" th:text="${errorMessage}"></p>
+        <a href="/foods" class="back-link">Back to list</a>
+    </div>
+
+    <div th:if="${food!=null}" class="food-detail">
+        <h1 th:text="${food.name}"></h1>
+        <p><strong>Name:</strong><span th:text="${food.name}"></span></p>
+        <p><strong>Barcode:</strong><span th:text="${food.barcode}"></span></p>
+        <p><strong>Price:</strong><span th:text="${food.price}"></span></p>
+        <p><strong>Lactose</strong><span th:text="${food.hasLactose}"></span></p>
+        <p><strong>Seafood</strong><span th:text="${food.hasSeafood}"></span></p>
+        <P><strong>Price</strong><span th:text="${food.price}"></span></P>
+        <p><strong>Quantity</strong><span th:text="${food.quantity}"></span></p>
+        <p><strong>Best Before Date</strong><span th:text="${food.bestBefore}"></span></p>
+
+        <a th:href="@{/foods/edit/{id}(id=${food.id})}">Edit</a>
+        <a href="/foods">Back to list</a>
+    </div>
+
 </div>
 
 </body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Allergy Check</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: body}"></div>
+<h1>Food Allergy Check</h1>
+
+<div class="page-container">
+
+    <form th:action="@{/foods/check}" method="get">
+        <label for="barcode">Barcode
+        <input type="text" id="barcode" name="barcode" placeholder="Enter barcode" required>
+        </label>
+        <button type="submit">Check</button>
+    </form>
+
+    <div th:if="${result != null}" class="result-box">
+        <p th:text="${result}"></p>
+    </div>
+
+</div>
+
+</body>
+</html>

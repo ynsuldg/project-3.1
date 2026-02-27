@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Foods Containing Seafood</title>
+  <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: body}"></div>
+
+<h1> Foods Containing Seafood</h1>
+
+<div class="page-container">
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Barcode</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Best Before</th>
+      <th>Actions</th>
+    </tr>
+
+    <tr th:each="food : ${foods}">
+      <td th:text="${food.name}"></td>
+      <td th:text="${food.barcode}"></td>
+      <td th:text="${food.price}"></td>
+      <td th:text="${food.quantity}"></td>
+      <td th:text="${food.bestBefore}"></td>
+
+      <td class="actions">
+        <a class="btn-link" th:href="@{/foods/{id}(id=${food.id})}">View</a>
+        <a class="btn-link" th:href="@{/foods/edit/{id}(id=${food.id})}">Edit</a>
+
+        <form th:action="@{/foods/delete/{id}(id=${food.id})}" method="post">
+          <button type="submit">Delete</button>
+        </form>
+
+
+      </td>
+
+
+    </tr>
+
+  </table>
+
+
+</div>
+
+</body>
+</html>
