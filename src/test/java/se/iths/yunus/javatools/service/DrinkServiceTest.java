@@ -1,7 +1,10 @@
 package se.iths.yunus.javatools.service;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import se.iths.yunus.javatools.exception.DrinkNotFoundException;
 import se.iths.yunus.javatools.model.Drink;
 import se.iths.yunus.javatools.repository.DrinkRepository;
@@ -17,19 +20,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class DrinkServiceTest {
 
+    @Mock
     private DrinkRepository drinkRepository;
+
+    @Mock
     private DrinkValidator drinkValidator;
+
+    @InjectMocks
     private DrinkService drinkService;
-
-    @BeforeEach
-    void setUp() {
-        drinkRepository = mock(DrinkRepository.class);
-        drinkValidator = mock(DrinkValidator.class);
-
-        drinkService = new DrinkService(drinkRepository, drinkValidator);
-    }
 
     // GET ALL
     @Test

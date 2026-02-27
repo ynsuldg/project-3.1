@@ -37,11 +37,11 @@ class SpiritServiceTest {
 
     @BeforeEach
     public void setUp() {
-        redWine = new Spirit(1L, "Red Wine",
+        redWine = new Spirit("Red Wine",
                 "Bourdo", 14.7, 18, 159.90);
-        whiteWine = new Spirit(2L, "White Wine",
+        whiteWine = new Spirit("White Wine",
                 "Chatu Blanich", 14.3, 12, 129.90);
-        spirit = new Spirit(3L, "Whisky",
+        spirit = new Spirit("Whisky",
                 "Macallan", 40.0, 24, 599.0);
         spirits = List.of(redWine, whiteWine);
     }
@@ -63,7 +63,7 @@ class SpiritServiceTest {
     @Test
     public void testCreateInvalidSpiritNameNull() {
         //Arrange
-        Spirit invalidSpirit = new Spirit(4L, "",
+        Spirit invalidSpirit = new Spirit("",
                 "Invalid", -5.0, -1, -100.0);
         //Act & Assert
         try {
@@ -78,7 +78,7 @@ class SpiritServiceTest {
     @Test
     public void testSpiritMaxAPVExceeded() {
         //Arrange
-        Spirit invalidSpirit = new Spirit(5L, "Vodka",
+        Spirit invalidSpirit = new Spirit("Vodka",
                 "Invalid Vodka", 150.0, 0, 50.0);
         //Act & Assert
         try {
@@ -131,7 +131,7 @@ class SpiritServiceTest {
     @Test
     public void testUpdateSpirit() {
         //Arrange
-        Spirit updatedSpirit = new Spirit(1L, "Whisky", "Macallan",
+        Spirit updatedSpirit = new Spirit("Whisky", "Macallan",
                 40.0, 24, 599.0);
         when(spiritRepository.findById(1L)).thenReturn(Optional.of(redWine));
         when(spiritRepository.save(redWine)).thenReturn(redWine);

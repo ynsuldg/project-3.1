@@ -7,20 +7,20 @@ import jakarta.persistence.*;
 public class Spirit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "spiritid")
+    @Column(name = "spirit_id")
     private Long id;
     private String type;
     @Column(name = "name")
     private String title;
     private double apv;
+    @Column(name = "age_in_month")
     private int ageInMonth;
     private double price;
 
     public Spirit() {
     }
 
-    public Spirit(Long id, String type, String title, double apv, int ageInMonth, double price) {
-        this.id = id;
+    public Spirit(String type, String title, double apv, int ageInMonth, double price) {
         this.type = type;
         this.title = title;
         this.apv = apv;

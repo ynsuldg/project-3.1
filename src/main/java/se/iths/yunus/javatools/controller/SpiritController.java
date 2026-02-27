@@ -9,26 +9,28 @@ import se.iths.yunus.javatools.service.SpiritService;
 @Controller
 @RequestMapping("/spirits")
 public class SpiritController {
+
     private final SpiritService spiritService;
 
     public SpiritController(SpiritService spiritService) {
         this.spiritService = spiritService;
     }
 
-    @GetMapping
+    @GetMapping({"", "/"})
     public String getAllSpirits(Model model) {
         model.addAttribute("spirits", spiritService.getAllSpirit());
         return "spirits";
     }
 
     @GetMapping("/new")
-    public String showCreateFormSpirit() {
+    public String showCreateForm(Model model) {
+        model.addAttribute("spirit", new Spirit());
         return "create-spirit";
     }
 
     @PostMapping
-    public String createSpirits(@ModelAttribute Spirit spirit) {
-        Spirit spirit1 = spiritService.createSpirit(spirit);
+    public String createSpirit(@ModelAttribute Spirit spirit) {
+        spiritService.createSpirit(spirit);
         return "redirect:/spirits";
     }
 
@@ -38,20 +40,19 @@ public class SpiritController {
         return "spirit";
     }
 
-    @PutMapping("/{id}")
-    public String updateSpirit(@PathVariable Long id, @ModelAttribute Spirit spirit) {
-        Spirit spirit1 = spiritService.updateSpirit(id, spirit);
-        return "redirect:/spirits";
-    }
-
     @GetMapping("/{id}/edit")
-    public String showUpdate(@PathVariable Long id, Model model) {
-        Spirit spirit = spiritService.getSpiritId(id);
-        model.addAttribute("spirit", spirit);
+    public String showEditForm(@PathVariable Long id, Model model) {
+        model.addAttribute("spirit", spiritService.getSpiritId(id));
         return "edit-spirit";
     }
 
-    @DeleteMapping("/{id}")
+    @PostMapping("/{id}")
+    public String updateSpirit(@PathVariable Long id, @ModelAttribute Spirit spirit) {
+        spiritService.updateSpirit(id, spirit);
+        return "redirect:/spirits";
+    }
+
+    @PostMapping("/{id}/delete")
     public String deleteSpirit(@PathVariable Long id) {
         spiritService.deleteSpirit(id);
         return "redirect:/spirits";
