@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>About Spirit</title>
+    <title>Spirit Details</title>
 </head>
 <body>
-<h1>Type of Spirit</h1>
-<span th:text="${spirit.type}"></span>
-<span th:text="${spirit.title}"></span>
-<span th:text="${spirit.apv}"></span> %
-<span th:text="${spirit.ageInMonth}">Months</span>
-<span th:text="${spirit.price}"></span> kr
+<h1 th:text="${spirit.title}">Spirit Name</h1>
+<p>Type: <span th:text="${spirit.type}"></span></p>
+<p>Alcohol per Volume: <span th:text="${spirit.apv}"></span> %</p>
+<p>Age: <span th:text="${spirit.ageInMonth}"></span> months</p>
+<p>Price: <span th:text="${spirit.price}"></span> kr</p>
+<a th:href="@{/spirits}">Back to list</a>
 </body>
 </html>
